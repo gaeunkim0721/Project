@@ -1,0 +1,23 @@
+System.GetEnvironmentVariable \
+    Name:  'USERNAME' \
+    Value=> UserName
+    
+#set pythonPath to 'C:\\ProgramData\\Anaconda3\\python.exe'
+set pythonPath to 'C:\\ProgramData\\Anaconda3\\python.exe '
+
+#set workDir to 'C:\\Users\\user\\Desktop\\cv'
+set workDir to 'C:\\Users\\5gang_013\\Desktop\\cv'
+
+set pyScript to workDir +'\\img_show.py'
+
+System.RunDOSCommand \
+    DOSCommandOrApplication: pythonPath + ' ' + pyScript \
+    WorkingDirectory: workDir \
+    StandardOutput=> StandardOutput \
+    StandardError=> StandardError \
+    ExitCode=> ExitCode
+    
+
+Console.Write Message: 'stdout: '+ StandardOutput
+Console.Write Message: 'stderr (if any): '+ StandardError
+Console.Write Message: 'exit code (if any): ' + ExitCode
